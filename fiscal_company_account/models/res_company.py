@@ -13,16 +13,16 @@ class ResCompany(models.Model):
 
     @api.model
     def create(self, vals):
-        res = super().create(vals)
+        company = super().create(vals)
         if vals.get('fiscal_type') == 'fiscal_child':
-            res._propagate_properties_to_new_fiscal_child()
-        return res
+            company._propagate_properties_to_new_fiscal_child()
+        return company
 
     @api.multi
     def write(self, vals):
         res = super().write(vals)
         if vals.get('fiscal_type') == 'fiscal_child':
-            res._propagate_properties_to_new_fiscal_child()
+            self._propagate_properties_to_new_fiscal_child()
         return res
 
     @api.multi
