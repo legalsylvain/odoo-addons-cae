@@ -28,7 +28,8 @@ Copyright (C) 2013-Today GRAP (http://www.grap.coop)
 
     <!-- account.account -->
     <record id="account.account_comp_rule" model="ir.rule">
-        <field name="domain_force">['|',
+        <field name="domain_force">['|','|',
+            ('company_id','=',user.company_id.id),
             ('company_id','=',user.company_id.fiscal_company_id.id),
             ('company_id','=',False),
         ]</field>
@@ -36,7 +37,8 @@ Copyright (C) 2013-Today GRAP (http://www.grap.coop)
 
     <!-- account.tax -->
     <record id="account.tax_comp_rule" model="ir.rule">
-        <field name="domain_force">['|',
+        <field name="domain_force">['|','|',
+            ('company_id','=',user.company_id.id),
             ('company_id','=',user.company_id.fiscal_company_id.id),
             ('company_id','=',False),
         ]</field>
